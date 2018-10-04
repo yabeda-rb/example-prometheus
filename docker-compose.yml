@@ -1,0 +1,48 @@
+version: '3.4'
+
+x-app-service-template: &app
+  build: rails_app
+  image: evil-metrics-rails-app:1.0
+  volumes:
+    - ./rails_app:/app
+
+services:
+  rails:
+    <<: *app
+    ports:
+      - 5000:5000
+    environment:
+      REDIS_URL: redis://redis:6379/0
+
+  sidekiq:
+    <<: *app
+    ports:
+      - 5100:5100
+    environment:
+      PORT: 5100
+      REDIS_URL: redis://redis:6379/0
+    command: sidekiq -C config/sidekiq.yml
+
+  redis:
+    image: redis
+    command: redis-server
+
+  grafana:
+    image: grafana/grafana:5.2.4
+    depends_on:
+      - prometheus    
+    ports:
+      - 3000:3000/tcp
+    volumes: 
+      - ./grafana_db:/var/lib/grafana
+    user: "104"
+
+  prometheus:
+    image: prom/prometheus:v2.4.3
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090/tcp
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+  

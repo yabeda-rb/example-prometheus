@@ -1,0 +1,6 @@
+:concurrency: 5
+:queues:
+  - [urgent,  20]
+  - [mailers, 10]
+  - [default, 10]
+  - [utils,    1]
