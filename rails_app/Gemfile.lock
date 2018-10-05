@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/evil-metrics/evil-metrics-sidekiq.git
-  revision: c3774bef149a45e57565d391676da6bf1c3e18e4
-  specs:
-    evil-metrics-sidekiq (0.1.0)
-      evil-metrics
-      sidekiq
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -62,12 +54,15 @@ GEM
     evil-metrics (0.1.0)
       concurrent-ruby
       dry-initializer
-    evil-metrics-prometheus (0.1.0)
+    evil-metrics-prometheus (0.1.1)
       evil-metrics
       prometheus-client
     evil-metrics-rails (0.1.0)
       evil-metrics
       rails
+    evil-metrics-sidekiq (0.1.1)
+      evil-metrics
+      sidekiq
     execjs (2.7.0)
     ffi (1.9.25)
     globalid (0.4.1)
@@ -181,7 +176,7 @@ DEPENDENCIES
   byebug
   evil-metrics-prometheus
   evil-metrics-rails
-  evil-metrics-sidekiq!
+  evil-metrics-sidekiq (~> 0.1.1)
   listen (>= 3.0.5, < 3.2)
   mini_racer
   puma (~> 3.11)

@@ -19,7 +19,7 @@ gem 'mini_racer', platforms: :ruby
 gem "sidekiq"
 
 gem "evil-metrics-rails"
-gem "evil-metrics-sidekiq", github: "evil-metrics/evil-metrics-sidekiq"
+gem "evil-metrics-sidekiq", "~> 0.1.1"
 gem "evil-metrics-prometheus"
 
 group :development, :test do
