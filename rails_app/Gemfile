@@ -18,9 +18,9 @@ gem 'mini_racer', platforms: :ruby
 
 gem "sidekiq"
 
-gem "evil-metrics-rails"
-gem "evil-metrics-sidekiq", "~> 0.1.1"
-gem "evil-metrics-prometheus"
+gem "yabeda-rails"
+gem "yabeda-sidekiq", "~> 0.1.1"
+gem "yabeda-prometheus"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

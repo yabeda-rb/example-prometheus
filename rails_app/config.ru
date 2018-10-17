@@ -2,6 +2,6 @@
 
 require_relative 'config/environment'
 
-use Evil::Metrics::Prometheus::Exporter
+use Yabeda::Prometheus::Exporter
 
 run Rails.application

@@ -51,23 +51,11 @@ GEM
     crass (1.0.4)
     dry-initializer (2.5.0)
     erubi (1.7.1)
-    evil-metrics (0.1.0)
-      concurrent-ruby
-      dry-initializer
-    evil-metrics-prometheus (0.1.1)
-      evil-metrics
-      prometheus-client
-    evil-metrics-rails (0.1.0)
-      evil-metrics
-      rails
-    evil-metrics-sidekiq (0.1.1)
-      evil-metrics
-      sidekiq
     execjs (2.7.0)
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    i18n (1.1.0)
+    i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     libv8 (6.7.288.46.1)
     listen (3.1.5)
@@ -77,7 +65,7 @@ GEM
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.7.0)
+    mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
@@ -89,7 +77,7 @@ GEM
       libv8 (>= 6.3)
     minitest (5.11.3)
     nio4r (2.3.1)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     prometheus-client (0.8.0)
       quantile (~> 0.2.1)
@@ -168,15 +156,24 @@ GEM
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+    yabeda (0.1.1)
+      concurrent-ruby
+      dry-initializer
+    yabeda-prometheus (0.1.2)
+      prometheus-client
+      yabeda
+    yabeda-rails (0.1.1)
+      rails
+      yabeda
+    yabeda-sidekiq (0.1.2)
+      sidekiq
+      yabeda
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   byebug
-  evil-metrics-prometheus
-  evil-metrics-rails
-  evil-metrics-sidekiq (~> 0.1.1)
   listen (>= 3.0.5, < 3.2)
   mini_racer
   puma (~> 3.11)
@@ -187,6 +184,9 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  yabeda-prometheus
+  yabeda-rails
+  yabeda-sidekiq (~> 0.1.1)
 
 RUBY VERSION
    ruby 2.5.1p57

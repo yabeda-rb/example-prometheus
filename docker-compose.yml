@@ -2,7 +2,7 @@ version: '3.4'
 
 x-app-service-template: &app
   build: rails_app
-  image: evil-metrics-rails-app:1.0
+  image: yabeda-rails-app:1.0
   volumes:
     - ./rails_app:/app
 
@@ -45,4 +45,3 @@ services:
       - 9090:9090/tcp
     command:
       - --config.file=/etc/prometheus/prometheus.yml
-  

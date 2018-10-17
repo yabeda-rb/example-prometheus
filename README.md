@@ -1,6 +1,6 @@
 # Example of Rails and Sidekiq metrics exported to Prometheus + Grafana
 
-This example illustrates how to use [evil-metrics] with rails application and draw graphs.
+This example illustrates how to use [yabeda] gem suite with rails application to draw graphs for app metrics.
 
 ## Prerequisites
 
@@ -11,12 +11,12 @@ Recent versions of Docker and Docker Compose installed.
 - Execute `docker-compose up` to start.
 - Go to rails application at http://localhost:5000
 - Hit the button and refresh page few times
-- Go to Grafana Web UI at http://localhost:3000/d/000000001/evil-metrics-rails-and-sidekiq (user: `admin`/`admin`)
+- Go to Grafana Web UI at http://localhost:3000/d/000000001/yabeda-metrics-for-rails-and-sidekiq?refresh=10s (user: `admin`/`admin`)
 - Look for graphs
 
 ## Notes
 
-- Sample [Rails] application is equipped with [evil-metrics-rails], [evil-metrics-sidekiq], and [evil-metrics-prometheus] gems and properly configured.
+- Sample [Rails] application is equipped with [yabeda-rails], [yabeda-sidekiq], and [yabeda-prometheus] gems and properly configured.
 - Raw rails metrics are exposed at http://localhost:5000/metrics
 - Raw sidekiq metrics are exposed at http://localhost:5100/metrics
 - The [Prometheus] Web UI runs at http://localhost:9090
@@ -34,10 +34,10 @@ The configurations are based off the following articles and repositories:
 
 This example is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-[evil-metrics]: https://github.com/evil-metrics/evil-metrics
-[evil-metrics-rails]: https://github.com/evil-metrics/evil-metrics-rails
-[evil-metrics-sidekiq]: https://github.com/evil-metrics/evil-metrics-sidekiq
-[evil-metrics-prometheus]: https://github.com/evil-metrics/evil-metrics-prometheus
+[yabeda]: https://github.com/yabeda/yabeda
+[yabeda-rails]: https://github.com/yabeda/yabeda-rails
+[yabeda-sidekiq]: https://github.com/yabeda/yabeda-sidekiq
+[yabeda-prometheus]: https://github.com/yabeda/yabeda-prometheus
 [Rails]: https://rubyonrails.org "Ruby on Rails MVC web-application framework optimized for programmer happiness"
 [Sidekiq]: https://github.com/mperham/sidekiq/ "Simple, efficient background processing for Ruby"
 [Prometheus]: https://prometheus.io/ "Open-source monitoring solution"
