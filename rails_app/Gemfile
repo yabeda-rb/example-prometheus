@@ -22,6 +22,11 @@ gem "yabeda-rails"
 gem "yabeda-sidekiq", "~> 0.1.1"
 gem "yabeda-prometheus"
 
+# Since v0.1.4 yabeda-prometheus can work either with official client
+# or with GitLab's fork which can handle multi-process application servers
+# We'll stick with official one.
+gem "prometheus-client"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
