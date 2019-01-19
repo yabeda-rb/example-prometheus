@@ -23,7 +23,7 @@ Recent versions of Docker and Docker Compose installed.
 - The [Grafana] Web UI runs at http://localhost:3000 , user: `admin`/`admin`.
 - The [Sidekiq] Web UI is available at http://localhost:5000/sidekiq
 
-## Errors
+## Possible errors and their solutions
 
 ### Permission denied error / My grafana container is not running (Stopping after boot)
 
