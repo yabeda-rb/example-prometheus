@@ -23,9 +23,28 @@ Recent versions of Docker and Docker Compose installed.
 - The [Grafana] Web UI runs at http://localhost:3000 , user: `admin`/`admin`.
 - The [Sidekiq] Web UI is available at http://localhost:5000/sidekiq
 
+## Errors
+
+### Permission denied error / My grafana container is not running (Stopping after boot)
+
+If your grafana's container is not running correctly after you run `docker-compose up` you're probably getting this error, if you check at `docker ps -a` you'll see your grana container with the status `Exited`, picks the id of this container and run `docker logs YOUR_GRAFANA_CONTAINER_ID` and check if the errors is equal to the following:
+
+```
+GF_PATHS_DATA='/var/lib/grafana' is not writable.                                                                                      
+You may have issues with file permissions, more information here: http://docs.grafana.org/installation/docker/#migration-from-a-previou
+s-version-of-the-docker-container-to-5-1-or-later                                                                                      
+mkdir: cannot create directory '/var/lib/grafana/plugins': Permission denied   
+```
+
+#### Solution
+
+Replace at your `docker-compose.yml` line 38 by your user's `id` that you will get on the following command:
+
+`$ id -u`
+
 ## Acknowledgement
 
-The configurations are based off the following articles and repositories:
+The configurations are based off the / articles and repositories:
  - https://finestructure.co/blog/2016/5/16/monitoring-with-prometheus-grafana-docker-part-1
  - https://github.com/NikolajLeischner/local-prometheus-grafana
  - https://www.digitalocean.com/community/tutorials/how-to-add-a-prometheus-dashboard-to-grafana
