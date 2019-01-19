@@ -40,7 +40,8 @@ mkdir: cannot create directory '/var/lib/grafana/plugins': Permission denied
 
 Replace at your `docker-compose.yml` line 38 by your user's `id` that you will get on the following command:
 
-`$ id -u`
+```sh
+id -u
 
 ## Acknowledgement
 
