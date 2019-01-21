@@ -42,6 +42,7 @@ Replace at your `docker-compose.yml` line 38 by your user's `id` that you will g
 
 ```sh
 id -u
+```
 
 ## Acknowledgement
 
