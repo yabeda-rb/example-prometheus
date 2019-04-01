@@ -21,6 +21,7 @@ gem "sidekiq"
 gem "yabeda-rails"
 gem "yabeda-sidekiq", "~> 0.1.1"
 gem "yabeda-prometheus"
+gem "yabeda-puma-plugin"
 
 # Since v0.1.4 yabeda-prometheus can work either with official client
 # or with GitLab's fork which can handle multi-process application servers

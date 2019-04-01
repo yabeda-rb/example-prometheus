@@ -1,4 +1,4 @@
-# Example of Rails and Sidekiq metrics exported to Prometheus + Grafana
+# Example of Rails, Sidekiq and Puma metrics exported to Prometheus + Grafana
 
 This example illustrates how to use [yabeda] gem suite with rails application to draw graphs for app metrics.
 
@@ -11,14 +11,19 @@ Recent versions of Docker and Docker Compose installed.
 - Execute `docker-compose up` to start.
 - Go to rails application at http://localhost:5000
 - Hit the button and refresh page few times
-- Go to Grafana Web UI at http://localhost:3000/d/000000001/yabeda-metrics-for-rails-and-sidekiq?refresh=10s (user: `admin`/`admin`)
+- Go to Grafana Web UI at [localhost](http://localhost:3000/d/000000001/yabeda-metrics-for-rails-sidekiq-and-puma?refresh=5s) (user: `admin`/`admin`)
 - Look for graphs
+- After starting up docker-compose will run `rails-stressor` service to simulate huge load for the rails app. By default will do the request for 2 minutes.
+Settings could be changed in `docker-compose.yml` config (command parameter of the `rails_stressor` service).
+
+You also could run rails stressor again by executing `docker-compose up rails_stressor` command.
 
 ## Notes
 
-- Sample [Rails] application is equipped with [yabeda-rails], [yabeda-sidekiq], and [yabeda-prometheus] gems and properly configured.
+- Sample [Rails] application is equipped with [yabeda-rails], [yabeda-sidekiq], [yabeda-puma-plugin], and [yabeda-prometheus] gems and properly configured.
 - Raw rails metrics are exposed at http://localhost:5000/metrics
 - Raw sidekiq metrics are exposed at http://localhost:5100/metrics
+- Raw puma metrics are exposed at http://localhost:5100/metrics
 - The [Prometheus] Web UI runs at http://localhost:9090
 - The [Grafana] Web UI runs at http://localhost:3000 , user: `admin`/`admin`.
 - The [Sidekiq] Web UI is available at http://localhost:5000/sidekiq
@@ -58,6 +63,7 @@ This example is available as open source under the terms of the [MIT License](ht
 [yabeda]: https://github.com/yabeda/yabeda
 [yabeda-rails]: https://github.com/yabeda/yabeda-rails
 [yabeda-sidekiq]: https://github.com/yabeda/yabeda-sidekiq
+[yabeda-puma-plugin]: https://github.com/yabeda/yabeda-puma-plugin
 [yabeda-prometheus]: https://github.com/yabeda/yabeda-prometheus
 [Rails]: https://rubyonrails.org "Ruby on Rails MVC web-application framework optimized for programmer happiness"
 [Sidekiq]: https://github.com/mperham/sidekiq/ "Simple, efficient background processing for Ruby"

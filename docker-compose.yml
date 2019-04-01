@@ -13,6 +13,12 @@ services:
       - 5000:5000
     environment:
       REDIS_URL: redis://redis:6379/0
+    stdin_open: true
+    tty: true
+    depends_on:
+      - redis
+
+    command: bundle exec puma -C config/puma.rb
 
   sidekiq:
     <<: *app
@@ -21,6 +27,9 @@ services:
     environment:
       PORT: 5100
       REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - redis
+
     command: sidekiq -C config/sidekiq.yml
 
   redis:
@@ -43,5 +52,15 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - 9090:9090/tcp
+    depends_on:
+      - rails
+
     command:
       - --config.file=/etc/prometheus/prometheus.yml
+
+  rails_stressor:
+    build: rails_stressor
+    image: rails_stressor
+    depends_on:
+      - rails
+    command: -z 2m -c 15 -m GET http://rails:5000

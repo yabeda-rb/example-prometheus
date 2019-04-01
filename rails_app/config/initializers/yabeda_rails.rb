@@ -1,0 +1,1 @@
+Yabeda::Rails.install!

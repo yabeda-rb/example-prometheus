@@ -57,6 +57,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
+    json (2.2.0)
     libv8 (6.7.288.46.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -161,6 +162,10 @@ GEM
       dry-initializer
     yabeda-prometheus (0.1.4)
       yabeda
+    yabeda-puma-plugin (0.1.0)
+      json
+      puma
+      yabeda
     yabeda-rails (0.1.1)
       rails
       yabeda
@@ -185,6 +190,7 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
   yabeda-prometheus
+  yabeda-puma-plugin
   yabeda-rails
   yabeda-sidekiq (~> 0.1.1)
 

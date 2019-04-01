@@ -15,7 +15,3 @@ RUN gem install bundler && bundle install --jobs 4 --retry 5
 COPY . .
 
 EXPOSE 5000
-
-ENTRYPOINT ["bundle", "exec"]
-
-CMD ["rails", "server", "-p", "5000", "-b", "0.0.0.0"]
