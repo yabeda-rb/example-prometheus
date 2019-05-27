@@ -35,10 +35,10 @@ You also could run rails stressor again by executing `docker-compose up rails_st
 If your grafana's container is not running correctly after you run `docker-compose up` you're probably getting this error, if you check at `docker ps -a` you'll see your grana container with the status `Exited`, picks the id of this container and run `docker logs YOUR_GRAFANA_CONTAINER_ID` and check if the errors is equal to the following:
 
 ```
-GF_PATHS_DATA='/var/lib/grafana' is not writable.                                                                                      
+GF_PATHS_DATA='/var/lib/grafana' is not writable.
 You may have issues with file permissions, more information here: http://docs.grafana.org/installation/docker/#migration-from-a-previou
-s-version-of-the-docker-container-to-5-1-or-later                                                                                      
-mkdir: cannot create directory '/var/lib/grafana/plugins': Permission denied   
+s-version-of-the-docker-container-to-5-1-or-later
+mkdir: cannot create directory '/var/lib/grafana/plugins': Permission denied
 ```
 
 #### Solution
@@ -60,11 +60,11 @@ The configurations are based off the following articles and repositories:
 
 This example is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-[yabeda]: https://github.com/yabeda/yabeda
-[yabeda-rails]: https://github.com/yabeda/yabeda-rails
-[yabeda-sidekiq]: https://github.com/yabeda/yabeda-sidekiq
-[yabeda-puma-plugin]: https://github.com/yabeda/yabeda-puma-plugin
-[yabeda-prometheus]: https://github.com/yabeda/yabeda-prometheus
+[yabeda]: https://github.com/yabeda-rb/yabeda
+[yabeda-rails]: https://github.com/yabeda-rb/yabeda-rails
+[yabeda-sidekiq]: https://github.com/yabeda-rb/yabeda-sidekiq
+[yabeda-puma-plugin]: https://github.com/yabeda-rb/yabeda-puma-plugin
+[yabeda-prometheus]: https://github.com/yabeda-rb/yabeda-prometheus
 [Rails]: https://rubyonrails.org "Ruby on Rails MVC web-application framework optimized for programmer happiness"
 [Sidekiq]: https://github.com/mperham/sidekiq/ "Simple, efficient background processing for Ruby"
 [Prometheus]: https://prometheus.io/ "Open-source monitoring solution"
