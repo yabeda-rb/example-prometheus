@@ -84,7 +84,7 @@ GEM
       quantile (~> 0.2.1)
     puma (3.12.0)
     quantile (0.2.1)
-    rack (2.0.6)
+    rack (2.2.3)
     rack-protection (2.0.4)
       rack
     rack-test (1.1.0)
