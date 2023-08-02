@@ -10,7 +10,7 @@ RUN mkdir -p /app
 WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler && bundle install --jobs 4 --retry 5
+RUN gem install bundler -v 1.17.1 && bundle install --jobs 4 --retry 5
 
 COPY . .
 
