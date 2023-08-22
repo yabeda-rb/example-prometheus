@@ -1,5 +1,5 @@
 FROM golang
 
-RUN go get -u github.com/rakyll/hey
+RUN go install github.com/rakyll/hey@latest
 
 ENTRYPOINT ["hey"]
