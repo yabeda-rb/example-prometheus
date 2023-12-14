@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
-  def index
-  end
+  def index; end
 
   def enqueue
     rand(1000).times do
