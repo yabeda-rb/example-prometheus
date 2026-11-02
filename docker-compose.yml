@@ -1,47 +1,62 @@
-version: '3.4'
-
 x-app-service-template: &app
   build: rails_app
   image: yabeda-rails-app:1.0
   volumes:
     - ./rails_app:/app
+  environment: &app-environment
+    REDIS_URL: redis://redis:6379/0
+    RAILS_HOST: ${RAILS_HOST:-rails}
 
 services:
   rails:
     <<: *app
     ports:
-      - 5000:5000
-    environment:
-      REDIS_URL: redis://redis:6379/0
+      - 127.0.0.1:${RAILS_PORT:-5000}:5000
     stdin_open: true
     tty: true
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "--output", "/dev/null", "http://localhost:5000/up"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 60s
+      start_interval: 1s
 
     command: bundle exec puma -C config/puma.rb
 
   sidekiq:
     <<: *app
     ports:
-      - 5100:5100
+      - 127.0.0.1:5100:5100
     environment:
+      <<: *app-environment
       PORT: 5100
-      REDIS_URL: redis://redis:6379/0
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
 
-    command: sidekiq -C config/sidekiq.yml
+    command: bundle exec sidekiq -C config/sidekiq.yml
 
   redis:
-    image: redis
+    image: redis:8-alpine
     command: redis-server
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+      start_interval: 1s
 
   grafana:
     image: grafana/grafana:10.2.2
     depends_on:
-      - prometheus    
+      - prometheus
     ports:
-      - 3000:3000/tcp
+      - 127.0.0.1:3000:3000/tcp
     volumes: 
       - ./grafana_db:/var/lib/grafana
     user: "0"
@@ -51,7 +66,7 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-      - 9090:9090/tcp
+      - 127.0.0.1:9090:9090/tcp
     depends_on:
       - rails
     command:
@@ -61,5 +76,6 @@ services:
     build: rails_stressor
     image: rails_stressor
     depends_on:
-      - rails
+      rails:
+        condition: service_healthy
     command: -z 2m -c 15 -m GET http://rails:5000

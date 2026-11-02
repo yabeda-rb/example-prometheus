@@ -8,7 +8,7 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
+  config.enable_reloading = true
 
   # Do not eager load code on boot.
   config.eager_load = false
@@ -60,6 +60,10 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
+
+  # Allow requests from other containers (e.g. the stressor) addressing the app by its Docker Compose service name.
+  # Override with RAILS_HOST if the app is reached under a different host name.
+  config.hosts << ENV.fetch('RAILS_HOST', 'rails')
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

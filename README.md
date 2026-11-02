@@ -8,7 +8,8 @@ Recent versions of Docker and Docker Compose installed.
 
 ## Usage
 
-- Execute `docker-compose up` to start.
+- Execute `docker compose up` to start. Set `RAILS_PORT` to change the Rails port on your machine (5000 by default), e.g. `RAILS_PORT=5001 docker compose up`.
+  Set `RAILS_HOST` to allow the Rails app to be reached under a different host name (`rails`, the Docker Compose service name, by default).
 - Go to rails application at http://localhost:5000
 - Hit the button and refresh page few times
 - Go to Grafana Web UI at [localhost](http://localhost:3000/d/000000001/yabeda-metrics-for-rails-sidekiq-and-puma?refresh=5s) (user: `admin`/`admin`)
@@ -16,14 +17,13 @@ Recent versions of Docker and Docker Compose installed.
 - After starting up docker-compose will run `rails-stressor` service to simulate huge load for the rails app. By default will do the request for 2 minutes.
 Settings could be changed in `docker-compose.yml` config (command parameter of the `rails_stressor` service).
 
-You also could run rails stressor again by executing `docker-compose up rails_stressor` command.
+You also could run rails stressor again by executing `docker compose up rails_stressor` command.
 
 ## Notes
 
 - Sample [Rails] application is equipped with [yabeda-rails], [yabeda-sidekiq], [yabeda-puma-plugin], and [yabeda-prometheus] gems and properly configured.
-- Raw rails metrics are exposed at http://localhost:5000/metrics
+- Raw rails and puma metrics are exposed at http://localhost:5000/metrics
 - Raw sidekiq metrics are exposed at http://localhost:5100/metrics
-- Raw puma metrics are exposed at http://localhost:5100/metrics
 - The [Prometheus] Web UI runs at http://localhost:9090
 - The [Grafana] Web UI runs at http://localhost:3000 , user: `admin`/`admin`.
 - The [Sidekiq] Web UI is available at http://localhost:5000/sidekiq

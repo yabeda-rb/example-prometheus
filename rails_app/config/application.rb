@@ -23,7 +23,7 @@ Bundler.require(*Rails.groups)
 module RailsApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 8.1
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -37,5 +37,8 @@ module RailsApp
     config.generators.system_tests = nil
 
     config.active_job.queue_adapter = :sidekiq
+
+    # Image variants aren't used in this app, so don't require the image_processing gem.
+    config.active_storage.variant_processor = :disabled
   end
 end
