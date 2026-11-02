@@ -146,7 +146,7 @@ GEM
     prism (2.1.0-x86_64-linux-gnu)
     prometheus-client (4.2.5)
       base64
-    puma (6.6.1)
+    puma (8.0.2)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.7)
@@ -269,7 +269,7 @@ DEPENDENCIES
   debug
   jbuilder
   prometheus-client
-  puma (~> 6.0)
+  puma (~> 8.0)
   rails (~> 8.1.4)
   sidekiq
   sprockets-rails
@@ -283,7 +283,7 @@ DEPENDENCIES
   yabeda-sidekiq
 
 RUBY VERSION
-   ruby 3.4.12p148
+  ruby 3.4.12p148
 
 BUNDLED WITH
-   2.4.1
+  4.0.23
